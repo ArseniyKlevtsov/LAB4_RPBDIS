@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LAB4_RPBDIS.Models.Train>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DistanceInKm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsBrandedTrain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistanceInKm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBrandedTrain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainType.TypeName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TrainId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TrainId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TrainId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
